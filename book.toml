@@ -1,0 +1,43 @@
+[book]
+title = "chg1f's blog"
+authors = ["chg1f"]
+description = "keep it simple, stupid"
+src = "content"
+
+[build]
+build-dir = "book"
+create-missing = true
+use-default-preprocessors = true
+
+[preprocessor.toc]
+command = "mdbook-toc"
+marker = "[TOC]"
+max-level = 4
+renderer = ["html"]
+
+[preprocessor.index]
+
+[preprocessor.links]
+
+[output.html]
+mathjax-support = true
+git-repository-url = "https://github.com/chg1f/chg1f.github.io/tree/mdbook"
+edit-url-template = "https://github.com/chg1f/chg1f.github.io/tree/mdbook/{path}"
+
+[output.html.search]
+enable = true
+limit-results = 20
+use-boolean-and = true
+boost-title = 2
+boost-hierarchy = 2
+boost-paragraph = 1
+expand = true
+heading-split-level = 2
+
+# [output.wordcount]
+
+[output.html.print]
+enable = false
+
+[output.html.fold]
+enable = true
