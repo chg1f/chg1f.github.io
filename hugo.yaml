@@ -1,0 +1,70 @@
+title: CHG1F'S BLOG
+baseURL: https://chg1f.github.io/
+
+enableGitInfo: true
+frontmatter:
+  date:
+    - date
+    - :filename
+    - :default
+  lastmod:
+    - lastmod
+    - :fileModTime
+    - :git
+    - :default
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
+
+menu:
+  main:
+    - name: Search
+      url: search/
+      weight: 1
+    - name: Tags
+      url: tags/
+      weight: 2
+    - name: Archive
+      url: archives
+      weight: 100
+
+theme: papermod
+params:
+  author: chg1f
+  description: KEEP IT SIMPLE, STUPID!
+  socialIcons:
+    - name: github
+      url: "https://github.com/chg1f"
+
+  env: production
+  showtoc: true
+  tocopen: false
+  DateFormat: "Mon, 02 Jan 2006"
+  ShowCodeCopyButtons: true
+  ShowWordCount: true
+  UseHugoToc: true
+
+  homeInfoParams:
+    Title: |-
+      KEEP IT SIMPLE, STUPID!
+    # Content: |-
+    #   KEEP IT SIMPLE, STUPID!
+
+  fuseOpts:
+    isCaseSensitive: false
+    shouldSort: true
+    location: 0
+    distance: 1000
+    threshold: 0.4
+    minMatchCharLength: 0
+    # limit: 10 # refer: https://www.fusejs.io/api/methods.html#search
+    keys: ["title", "permalink", "summary", "content"]
+
+pygmentsUseClasses: true
+markup:
+  highlight:
+    noClasses: false
+    style: catppuccin-latte
