@@ -1,0 +1,524 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>install-gentoo-and-archlinux - chg1f&#x27;s blog</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="keep it simple, stupid">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../index.html">CHG1F'S BLOG</a></li><li class="chapter-item affix "><li class="spacer"></li><li class="chapter-item "><a href="../archive/mount-android-image-file.html"><strong aria-hidden="true">1.</strong> mount-android-image-file</a></li><li class="chapter-item "><a href="../archive/ngrok-customized.html"><strong aria-hidden="true">2.</strong> ngrok-customized</a></li><li class="chapter-item "><a href="../archive/using-vim.html"><strong aria-hidden="true">3.</strong> using-vim</a></li><li class="chapter-item "><a href="../archive/vim.html"><strong aria-hidden="true">4.</strong> vim</a></li><li class="chapter-item "><a href="../archive/hello-world.html"><strong aria-hidden="true">5.</strong> hello-world</a></li><li class="chapter-item "><a href="../archive/redis_data_structure.html"><strong aria-hidden="true">6.</strong> redis_data_structure</a></li><li class="chapter-item "><a href="../archive/go-yaml.html"><strong aria-hidden="true">7.</strong> go-yaml</a></li><li class="chapter-item "><a href="../archive/how_to_root_android.html"><strong aria-hidden="true">8.</strong> how_to_root_android</a></li><li class="chapter-item "><a href="../archive/protobuf-c-cpp-string-error.html"><strong aria-hidden="true">9.</strong> protobuf-c-cpp-string-error</a></li><li class="chapter-item "><a href="../archive/git-conventions.html"><strong aria-hidden="true">10.</strong> git-conventions</a></li><li class="chapter-item "><a href="../archive/openresty-waf.html"><strong aria-hidden="true">11.</strong> openresty-waf</a></li><li class="chapter-item "><a href="../archive/adb-device-no-permissions.html"><strong aria-hidden="true">12.</strong> adb-device-no-permissions</a></li><li class="chapter-item "><a href="../archive/cups.html"><strong aria-hidden="true">13.</strong> cups</a></li><li class="chapter-item "><a href="../archive/nginx-502-error.html"><strong aria-hidden="true">14.</strong> nginx-502-error</a></li><li class="chapter-item "><a href="../archive/iwlwifi.html"><strong aria-hidden="true">15.</strong> iwlwifi</a></li><li class="chapter-item "><a href="../archive/concurency.html"><strong aria-hidden="true">16.</strong> concurency</a></li><li class="chapter-item expanded "><a href="../archive/install-gentoo-and-archlinux.html" class="active"><strong aria-hidden="true">17.</strong> install-gentoo-and-archlinux</a></li><li class="chapter-item "><a href="../archive/make-livecd.html"><strong aria-hidden="true">18.</strong> make-livecd</a></li><li class="chapter-item "><a href="../archive/i3.html"><strong aria-hidden="true">19.</strong> i3</a></li><li class="chapter-item "><a href="../archive/linux-graphics.html"><strong aria-hidden="true">20.</strong> linux-graphics</a></li><li class="chapter-item "><a href="../archive/url-schema.html"><strong aria-hidden="true">21.</strong> url-schema</a></li><li class="chapter-item "><a href="../archive/linux_keyboard.html"><strong aria-hidden="true">22.</strong> linux_keyboard</a></li><li class="chapter-item "><a href="../archive/serial_connection.html"><strong aria-hidden="true">23.</strong> serial_connection</a></li><li class="chapter-item "><a href="../archive/pyyaml-parse-error.html"><strong aria-hidden="true">24.</strong> pyyaml-parse-error</a></li><li class="chapter-item "><a href="../archive/index.html"><strong aria-hidden="true">25.</strong> index</a></li><li class="chapter-item "><a href="../archive/python_coroutine.html"><strong aria-hidden="true">26.</strong> python_coroutine</a></li><li class="chapter-item "><a href="../archive/mitm-attack-via-v2ray.html"><strong aria-hidden="true">27.</strong> mitm-attack-via-v2ray</a></li><li class="chapter-item "><a href="../archive/kali_localectl_list_keymaps_no_such_file.html"><strong aria-hidden="true">28.</strong> kali_localectl_list_keymaps_no_such_file</a></li><li class="chapter-item "><a href="../archive/postwoman-cors.html"><strong aria-hidden="true">29.</strong> postwoman-cors</a></li><li class="chapter-item "><a href="../archive/partition-disk.html"><strong aria-hidden="true">30.</strong> partition-disk</a></li><li class="chapter-item "><a href="../archive/ssl-disable-connect.html"><strong aria-hidden="true">31.</strong> ssl-disable-connect</a></li><li class="chapter-item "><a href="../archive/grub.html"><strong aria-hidden="true">32.</strong> grub</a></li><li class="chapter-item "><a href="../archive/network-protocol.html"><strong aria-hidden="true">33.</strong> network-protocol</a></li><li class="chapter-item "><a href="../archive/install-usb.html"><strong aria-hidden="true">34.</strong> install-usb</a></li><li class="chapter-item "><a href="../archive/network_topology.html"><strong aria-hidden="true">35.</strong> network_topology</a></li><li class="chapter-item "><a href="../archive/sed_bad_flag_in_substitute_command.html"><strong aria-hidden="true">36.</strong> sed_bad_flag_in_substitute_command</a></li><li class="chapter-item "><a href="../archive/docker-permission-denied.html"><strong aria-hidden="true">37.</strong> docker-permission-denied</a></li><li class="chapter-item "><a href="../archive/owasp_top10_webapp_sec_risks.html"><strong aria-hidden="true">38.</strong> owasp_top10_webapp_sec_risks</a></li><li class="chapter-item "><a href="../archive/boot-device.html"><strong aria-hidden="true">39.</strong> boot-device</a></li><li class="chapter-item "><a href="../archive/distribution.html"><strong aria-hidden="true">40.</strong> distribution</a></li><li class="chapter-item "><a href="../archive/ngrok-tunnel-not-found.html"><strong aria-hidden="true">41.</strong> ngrok-tunnel-not-found</a></li><li class="chapter-item "><a href="../archive/base64-encode-linux-and-windows.html"><strong aria-hidden="true">42.</strong> base64-encode-linux-and-windows</a></li><li class="chapter-item "><a href="../archive/netfilter.html"><strong aria-hidden="true">43.</strong> netfilter</a></li><li class="chapter-item "><a href="../archive/rdns.html"><strong aria-hidden="true">44.</strong> rdns</a></li><li class="chapter-item "><a href="../archive/android-flusing-device.html"><strong aria-hidden="true">45.</strong> android-flusing-device</a></li><li class="chapter-item "><a href="../archive/reinstall-manjaro-from-archlinux.html"><strong aria-hidden="true">46.</strong> reinstall-manjaro-from-archlinux</a></li><li class="chapter-item "><a href="../archive/fastboot-fake-plaseholder.html"><strong aria-hidden="true">47.</strong> fastboot-fake-plaseholder</a></li><li class="chapter-item "><a href="../archive/tmux.html"><strong aria-hidden="true">48.</strong> tmux</a></li><li class="chapter-item "><a href="../archive/docker-compose-network.html"><strong aria-hidden="true">49.</strong> docker-compose-network</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">chg1f&#x27;s blog</h1>
+
+                    <div class="right-buttons">
+                        <a href="https://github.com/chg1f/chg1f.github.io/tree/mdbook" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/chg1f/chg1f.github.io/tree/mdbook/content/archive/install-gentoo-and-archlinux.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <hr />
+<p>title: "Install Gentoo/Archlinux"
+date: 2020-12-06T09:13:12+08:00
+toc: true
+categories:</p>
+<ul>
+<li>note
+tags:</li>
+<li>linux</li>
+<li>gentoo</li>
+<li>archlinux</li>
+<li>install</li>
+</ul>
+<hr />
+<blockquote>
+<p>这理又重装了Gentoo,Archlinux是之前安装的,只在记忆中简单对比一下大概的</p>
+</blockquote>
+<blockquote>
+<p><em>约定名词</em>
+安装环境: 安装Gentoo/Archlinux的操作环境,非安装后的新系统环境,通常为LiveCD的Live环境中
+目标环境: 安装Gentoo/Archlinux的新系统环境,为安装后结果,此文以<code>/mnt</code>为挂载目标(与Archlinux一致,Gentoo官方文档是以<code>/mnt/gentoo</code>为例)</p>
+</blockquote>
+<h2 id="一点小理解"><a class="header" href="#一点小理解">一点小理解</a></h2>
+<blockquote>
+<p>https://www.gentoo.org/
+https://www.archlinux.org/</p>
+</blockquote>
+<div class="table-wrapper"><table><thead><tr><th></th><th>Gentoo</th><th>Archlinux</th></tr></thead><tbody>
+<tr><td>一句话</td><td>配置自由度极高(也有人说OverEninerring)</td><td>KISS(Keep it Simple, Stupid)</td></tr>
+<tr><td>硬件支持</td><td>反正内核自已编译程序自已编译...</td><td>官方支持x86</td></tr>
+<tr><td>INIT</td><td>OpenRC(default)/Systemd</td><td>Systemd</td></tr>
+<tr><td>包管理</td><td>portage(源码编译,提供<code>USE</code>,<code>SLOT</code>等超赞功能)</td><td>pacman(二进制分发)</td></tr>
+<tr><td>安装环境</td><td>基本完全不依赖LiveCD,可在任何安装环境下使用stage包开始构建新系统</td><td>依赖LiveCD一些工具</td></tr>
+</tbody></table>
+</div>
+<h2 id="玩起来"><a class="header" href="#玩起来">玩起来</a></h2>
+<ol>
+<li>
+<p>Gentoo</p>
+<blockquote>
+<p>https://wiki.gentoo.org/wiki/Installation
+https://wiki.gentoo.org/wiki/Handbook:Main_Page</p>
+</blockquote>
+</li>
+<li>
+<p>Archlinux</p>
+<blockquote>
+<p>https://wiki.archlinux.org/index.php/installation_guide</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="安装介质"><a class="header" href="#安装介质">安装介质</a></h3>
+<p><a href="https://blog.chongiofai.com/note/make-livecd">制作LiveUSB</a></p>
+<blockquote>
+<p>TODO:</p>
+</blockquote>
+<ol>
+<li>
+<p>Gentoo</p>
+<blockquote>
+<p>https://www.gentoo.org/downloads/</p>
+</blockquote>
+</li>
+<li>
+<p>Archlinux</p>
+<blockquote>
+<p>https://archlinux.org/download/</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="配置安装环境"><a class="header" href="#配置安装环境">配置安装环境</a></h3>
+<ol>
+<li>
+<p>Network</p>
+<pre><code class="language-bash">$ ip address
+</code></pre>
+</li>
+<li>
+<p>Date</p>
+<pre><code class="language-bash">$ date
+$ ntpdate -u cn.pool.ntp.org
+</code></pre>
+</li>
+<li>
+<p>Keymap</p>
+</li>
+</ol>
+<h3 id="磁盘分区"><a class="header" href="#磁盘分区">磁盘分区</a></h3>
+<p><a href="https://blog.chongiofai.com/note/partition-disk">Disk Partitional</a></p>
+<ol>
+<li>
+<p>准备安装磁盘</p>
+<pre><code class="language-bash"># 查看当前磁盘挂载情况,确定使用哪块磁盘
+$ sudo lsblk
+$ sudo blkid
+# 磁盘分区,以`/dev/sda`为例,简单区分`/`,`/home`,`/boot`,`/boot/efi`,此处使用UEFI方式躯动
+$ gdisk /dev/sda
+</code></pre>
+</li>
+<li>
+<p>磁盘格式化/加密/逻辑分区</p>
+<pre><code class="language-bash"># 此处只作普通分区
+$ mkfs.ext4 -L GENTOO /dev/sda1
+$ mkfs.vfat -L  /dev/sda2
+$ mkswap -L SWAP /dev/sda3
+$ mkfs.ext4 -L GENTOO /dev/sda4
+$ mkfs.ext4 -L GENTOO /dev/sda5
+</code></pre>
+</li>
+<li>
+<p>挂载磁盘</p>
+<pre><code class="language-bash">$ mount /dev/sda4 /
+$ mkdir -p /mnt/boot/efi
+$ mkdir -p /mnt/home
+$ mount /dev/sda1 /mnt/boot
+$ mount /dev/sda2 /mnt/boot/efi
+$ mount /dev/sda5 /mnt/home
+$ swapon /dev/sda3
+# 下方在Archlinux中可以使用LiveCD工具`arch-chroot /mnt`时自动完成,Gentoo需自行手动操作
+$ mount --types proc /proc /mnt/proc
+$ mount --rbind /sys /mnt/sys
+$ mount --make-rslave /mnt/sys  # 使用Systemd时必须
+$ mount --rbind /dev /mnt/dev
+$ mount --make-rslave /mnt/dev  # 使用Systemd时必须
+</code></pre>
+</li>
+</ol>
+<h3 id="安装工具链"><a class="header" href="#安装工具链">安装工具链</a></h3>
+<ol>
+<li>
+<p>Gentoo</p>
+<pre><code class="language-bash">$ tar xvf stage3-amd64-20201230T214503Z.tar.xz -C /mnt
+# 选择校验下载源
+$ mirrorselect -i -o &gt;&gt; /mnt/etc/portage/make.conf
+# 复制
+</code></pre>
+<blockquote>
+<p>进入环境后</p>
+</blockquote>
+<pre><code class="language-bash"># 配置下载源
+$ mkdir -p /etc/portage/repors.conf
+$ cp /usr/share/portage/config/repos.conf /etc/portage/repors.conf/gentoo.conf
+$ cat /etc/portage/repors.conf/gentoo.conf
+# 时间同步,Gentoo安装拉取会使用到`rsync`等依赖系统时间
+$ ntpdate -u cn.pool.ntp.org
+# 下载文件校验码
+$ emerge-webrsync
+# 下载文件目录
+$ emerge --sync
+# 确定portage配置
+$ cat /etc/portage/make.conf
+# 选择配置文件
+$ eselect profile list
+$ eselect profile set 1
+$ eselect profile list
+</code></pre>
+</li>
+<li>
+<p>Archlinux</p>
+<pre><code class="language-bash">$ pacstrap /mnt base
+</code></pre>
+</li>
+</ol>
+<h3 id="安装内核"><a class="header" href="#安装内核">安装内核</a></h3>
+<ol>
+<li>
+<p>Gentoo</p>
+<blockquote>
+<p>https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Kernel</p>
+</blockquote>
+<pre><code class="language-bash">$ emerge --ask --verbose sys-apps/pciutils app-admin/mcelog
+$ emerge --ask --verbose sys-kernel/gentoo-sources
+$ cd /usr/src/linux
+$ make menuconfig
+$ cat /usr/src/linux/.config
+$ make
+$ make modules_install
+$ make install
+$ ls /boot/vmlinuz-*-gentoo-*  /boot/config-*-gentoo-* /boot/System.map-*-gentoo-*
+$ genkenerl
+$ ls /boot/initramfs-*-gentoo-*
+</code></pre>
+</li>
+<li>
+<p>Archlinux</p>
+<pre><code class="language-bash">$ pacstrap /mnt linux
+</code></pre>
+</li>
+</ol>
+<h3 id="安装驱动"><a class="header" href="#安装驱动">安装驱动</a></h3>
+<ol>
+<li>
+<p>Gentoo</p>
+<pre><code class="language-bash">$ emerge --ask --verbose sys-kernel/linux-firmware
+</code></pre>
+</li>
+<li>
+<p>Archlinux</p>
+<pre><code class="language-bash">$ pacstrap /mnt linux-firmware
+</code></pre>
+</li>
+</ol>
+<h3 id="安装引导"><a class="header" href="#安装引导">安装引导</a></h3>
+<p><a href="https://blog.chongiofai.com/note/boot-device">Boot Device</a></p>
+<ol>
+<li>
+<p>Gentoo</p>
+<pre><code class="language-bash">$ emerge --ask --verbose sys-boot/grub:2
+</code></pre>
+</li>
+<li>
+<p>Archlinux</p>
+</li>
+</ol>
+<h3 id="个人化"><a class="header" href="#个人化">个人化</a></h3>
+<ol>
+<li>locale,keymap</li>
+<li>hostname, domain</li>
+<li>hosts</li>
+<li>passwd,useradd</li>
+</ol>
+<h3 id="其他"><a class="header" href="#其他">其他</a></h3>
+<h4 id="图形化"><a class="header" href="#图形化">图形化</a></h4>
+<p><a href="https://blog.chongiofai.com/note/linux-graphics">Linux Graphics</a></p>
+<ol>
+<li>
+<p>Gentoo</p>
+</li>
+<li>
+<p>Archlinux</p>
+</li>
+<li>
+<p>安装发行版工具链,如init(Archlinux的<code>Systemd</code>和Gentoo可选的<code>Systemd</code>及<code>OpenRC</code>)、包管理工具(Archlinux的<code>pacman</code>和Gentoo的<code>portage</code>)等等</p>
+<ul>
+<li>
+<p>Archlinux</p>
+<pre><code class="language-bash">pacstrap /mnt base
+</code></pre>
+</li>
+<li>
+<p>Gentoo</p>
+<blockquote>
+<p>https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Stage</p>
+</blockquote>
+<pre><code class="language-bash">tar xf stage3-amd64-20201202T214503Z.tar.xz  # 这里使用OpenRC版本init
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>工具链配置</p>
+</li>
+<li>
+<p>安装Linux的内核</p>
+</li>
+<li>
+<p>安装基本驱动集合</p>
+<ul>
+<li>
+<p>Archlinux</p>
+<pre><code class="language-bash">pacstrap /mnt linux-firmware
+</code></pre>
+</li>
+<li>
+<p>Gentoo</p>
+<pre><code class="language-bash">emerge --ask sys-kernel/linux-firmware
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>启动
+<code>grub-install --efi</code>....
+<code>update-grub</code></p>
+</li>
+<li>
+<p>本地化</p>
+</li>
+<li>
+<p>网络配置</p>
+</li>
+<li>
+<p>图形化(Optional)</p>
+</li>
+</ol>
+<blockquote>
+<p>TODO:</p>
+</blockquote>
+<h2 id="参考资料"><a class="header" href="#参考资料">参考资料</a></h2>
+<p>https://wiki.gentoo.org/</p>
+<p>http://wiki.archlinux.org/</p>
+<p>https://www.thegeekstuff.com/2011/02/linux-boot-process/</p>
+<h2 id="后续"><a class="header" href="#后续">后续</a></h2>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../archive/concurency.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../archive/make-livecd.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../archive/concurency.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../archive/make-livecd.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

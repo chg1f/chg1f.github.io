@@ -1,0 +1,353 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>owasp_top10_webapp_sec_risks - chg1f&#x27;s blog</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="keep it simple, stupid">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../index.html">CHG1F'S BLOG</a></li><li class="chapter-item affix "><li class="spacer"></li><li class="chapter-item "><a href="../archive/mount-android-image-file.html"><strong aria-hidden="true">1.</strong> mount-android-image-file</a></li><li class="chapter-item "><a href="../archive/ngrok-customized.html"><strong aria-hidden="true">2.</strong> ngrok-customized</a></li><li class="chapter-item "><a href="../archive/using-vim.html"><strong aria-hidden="true">3.</strong> using-vim</a></li><li class="chapter-item "><a href="../archive/vim.html"><strong aria-hidden="true">4.</strong> vim</a></li><li class="chapter-item "><a href="../archive/hello-world.html"><strong aria-hidden="true">5.</strong> hello-world</a></li><li class="chapter-item "><a href="../archive/redis_data_structure.html"><strong aria-hidden="true">6.</strong> redis_data_structure</a></li><li class="chapter-item "><a href="../archive/go-yaml.html"><strong aria-hidden="true">7.</strong> go-yaml</a></li><li class="chapter-item "><a href="../archive/how_to_root_android.html"><strong aria-hidden="true">8.</strong> how_to_root_android</a></li><li class="chapter-item "><a href="../archive/protobuf-c-cpp-string-error.html"><strong aria-hidden="true">9.</strong> protobuf-c-cpp-string-error</a></li><li class="chapter-item "><a href="../archive/git-conventions.html"><strong aria-hidden="true">10.</strong> git-conventions</a></li><li class="chapter-item "><a href="../archive/openresty-waf.html"><strong aria-hidden="true">11.</strong> openresty-waf</a></li><li class="chapter-item "><a href="../archive/adb-device-no-permissions.html"><strong aria-hidden="true">12.</strong> adb-device-no-permissions</a></li><li class="chapter-item "><a href="../archive/cups.html"><strong aria-hidden="true">13.</strong> cups</a></li><li class="chapter-item "><a href="../archive/nginx-502-error.html"><strong aria-hidden="true">14.</strong> nginx-502-error</a></li><li class="chapter-item "><a href="../archive/iwlwifi.html"><strong aria-hidden="true">15.</strong> iwlwifi</a></li><li class="chapter-item "><a href="../archive/concurency.html"><strong aria-hidden="true">16.</strong> concurency</a></li><li class="chapter-item "><a href="../archive/install-gentoo-and-archlinux.html"><strong aria-hidden="true">17.</strong> install-gentoo-and-archlinux</a></li><li class="chapter-item "><a href="../archive/make-livecd.html"><strong aria-hidden="true">18.</strong> make-livecd</a></li><li class="chapter-item "><a href="../archive/i3.html"><strong aria-hidden="true">19.</strong> i3</a></li><li class="chapter-item "><a href="../archive/linux-graphics.html"><strong aria-hidden="true">20.</strong> linux-graphics</a></li><li class="chapter-item "><a href="../archive/url-schema.html"><strong aria-hidden="true">21.</strong> url-schema</a></li><li class="chapter-item "><a href="../archive/linux_keyboard.html"><strong aria-hidden="true">22.</strong> linux_keyboard</a></li><li class="chapter-item "><a href="../archive/serial_connection.html"><strong aria-hidden="true">23.</strong> serial_connection</a></li><li class="chapter-item "><a href="../archive/pyyaml-parse-error.html"><strong aria-hidden="true">24.</strong> pyyaml-parse-error</a></li><li class="chapter-item "><a href="../archive/index.html"><strong aria-hidden="true">25.</strong> index</a></li><li class="chapter-item "><a href="../archive/python_coroutine.html"><strong aria-hidden="true">26.</strong> python_coroutine</a></li><li class="chapter-item "><a href="../archive/mitm-attack-via-v2ray.html"><strong aria-hidden="true">27.</strong> mitm-attack-via-v2ray</a></li><li class="chapter-item "><a href="../archive/kali_localectl_list_keymaps_no_such_file.html"><strong aria-hidden="true">28.</strong> kali_localectl_list_keymaps_no_such_file</a></li><li class="chapter-item "><a href="../archive/postwoman-cors.html"><strong aria-hidden="true">29.</strong> postwoman-cors</a></li><li class="chapter-item "><a href="../archive/partition-disk.html"><strong aria-hidden="true">30.</strong> partition-disk</a></li><li class="chapter-item "><a href="../archive/ssl-disable-connect.html"><strong aria-hidden="true">31.</strong> ssl-disable-connect</a></li><li class="chapter-item "><a href="../archive/grub.html"><strong aria-hidden="true">32.</strong> grub</a></li><li class="chapter-item "><a href="../archive/network-protocol.html"><strong aria-hidden="true">33.</strong> network-protocol</a></li><li class="chapter-item "><a href="../archive/install-usb.html"><strong aria-hidden="true">34.</strong> install-usb</a></li><li class="chapter-item "><a href="../archive/network_topology.html"><strong aria-hidden="true">35.</strong> network_topology</a></li><li class="chapter-item "><a href="../archive/sed_bad_flag_in_substitute_command.html"><strong aria-hidden="true">36.</strong> sed_bad_flag_in_substitute_command</a></li><li class="chapter-item "><a href="../archive/docker-permission-denied.html"><strong aria-hidden="true">37.</strong> docker-permission-denied</a></li><li class="chapter-item expanded "><a href="../archive/owasp_top10_webapp_sec_risks.html" class="active"><strong aria-hidden="true">38.</strong> owasp_top10_webapp_sec_risks</a></li><li class="chapter-item "><a href="../archive/boot-device.html"><strong aria-hidden="true">39.</strong> boot-device</a></li><li class="chapter-item "><a href="../archive/distribution.html"><strong aria-hidden="true">40.</strong> distribution</a></li><li class="chapter-item "><a href="../archive/ngrok-tunnel-not-found.html"><strong aria-hidden="true">41.</strong> ngrok-tunnel-not-found</a></li><li class="chapter-item "><a href="../archive/base64-encode-linux-and-windows.html"><strong aria-hidden="true">42.</strong> base64-encode-linux-and-windows</a></li><li class="chapter-item "><a href="../archive/netfilter.html"><strong aria-hidden="true">43.</strong> netfilter</a></li><li class="chapter-item "><a href="../archive/rdns.html"><strong aria-hidden="true">44.</strong> rdns</a></li><li class="chapter-item "><a href="../archive/android-flusing-device.html"><strong aria-hidden="true">45.</strong> android-flusing-device</a></li><li class="chapter-item "><a href="../archive/reinstall-manjaro-from-archlinux.html"><strong aria-hidden="true">46.</strong> reinstall-manjaro-from-archlinux</a></li><li class="chapter-item "><a href="../archive/fastboot-fake-plaseholder.html"><strong aria-hidden="true">47.</strong> fastboot-fake-plaseholder</a></li><li class="chapter-item "><a href="../archive/tmux.html"><strong aria-hidden="true">48.</strong> tmux</a></li><li class="chapter-item "><a href="../archive/docker-compose-network.html"><strong aria-hidden="true">49.</strong> docker-compose-network</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">chg1f&#x27;s blog</h1>
+
+                    <div class="right-buttons">
+                        <a href="https://github.com/chg1f/chg1f.github.io/tree/mdbook" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/chg1f/chg1f.github.io/tree/mdbook/content/archive/owasp_top10_webapp_sec_risks.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <hr />
+<h2>title: "OWASP Top 10 Web Application Security Risks"
+description: "OWASP前10 Web应用安全风险"
+date: 2021-04-19T12:58:50+08:00</h2>
+<blockquote>
+<p>https://owasp.org/www-project-top-ten/</p>
+<p>http://www.owasp.org.cn/owasp-project</p>
+<p>https://github.com/owasp-top</p>
+</blockquote>
+<h2 id="owasp-top-10-web-application-security-risks-versions"><a class="header" href="#owasp-top-10-web-application-security-risks-versions">OWASP Top 10 Web Application Security Risks Versions</a></h2>
+<div class="table-wrapper"><table><thead><tr><th></th><th>2017</th><th>2013</th><th>2010</th><th>2007</th><th>2004</th><th>2003</th></tr></thead><tbody>
+<tr><td>A1</td><td>注入</td><td>注入</td><td>注入</td><td>跨站脚本（XSS）</td><td>不安全的配置管理</td><td>未验证的参数</td></tr>
+<tr><td>A2</td><td>失效的身份认证</td><td>失效的身份认证和会话管理</td><td>失效的身份认证和会话管理</td><td>注入漏洞</td><td>错误的访问控制</td><td>错误的访问控制</td></tr>
+<tr><td>A3</td><td>敏感数据泄露</td><td>跨站脚本（XSS）</td><td>跨站脚本（XSS）</td><td>恶意文件执行</td><td>错误的验证和会话管理</td><td>错误的验证和会话管理</td></tr>
+<tr><td>A4</td><td>XML 外部实体（XXE）</td><td>不安全的直接对象引用</td><td>不安全的直接对象引用</td><td>不安全的直接对象引用</td><td>注入漏洞</td><td>跨站脚本</td></tr>
+<tr><td>A5</td><td>失效的访问控制</td><td>安全配置错误</td><td>安全配置错误</td><td>跨站请求伪造（CSRF）</td><td>缓冲溢出</td><td>缓冲溢出</td></tr>
+<tr><td>A6</td><td>安全配置错误</td><td>敏感信息泄漏</td><td>不安全的加密存储</td><td>信息泄漏和不恰当的错误处理</td><td>注入式漏洞</td><td>命令注入式漏洞</td></tr>
+<tr><td>A7</td><td>跨站脚本（XSS）</td><td>功能级访问控制缺失</td><td>没有限制URL访问</td><td>失效的身份认证和会话管理</td><td>不正确的错误处理</td><td>错误处理的问题</td></tr>
+<tr><td>A8</td><td>不安全的反序列化</td><td>跨站请求伪造（CSRF）</td><td>跨站请求伪造（CSRF）</td><td>不安全的加密存储</td><td>不安全的存储</td><td>密码学的不安全的使用</td></tr>
+<tr><td>A9</td><td>使用含有已知漏洞的组件</td><td>使用含有已知漏洞的组件</td><td>未验证的重定向和转发</td><td>不安全的通信</td><td>拒绝访问</td><td>远程管理漏洞</td></tr>
+<tr><td>A10</td><td>不足的日志记录和监控</td><td>未验证的重定向和转发</td><td>传输层保护不足</td><td>没有限制 URL 访问</td><td>未验证的输入</td><td>Web 和应用服务器的错误配置</td></tr>
+</tbody></table>
+</div>
+<h2 id="2017"><a class="header" href="#2017">2017</a></h2>
+<blockquote>
+<p>http://www.owasp.org.cn/owasp-project/download/2010_OWASP_Top_10
+https://github.com/owasp-top/owasp-top-2017</p>
+</blockquote>
+<h3 id="注入"><a class="header" href="#注入">注入</a></h3>
+<ul>
+<li>可利用性: 易</li>
+<li>普遍性: 常见</li>
+<li>可利用性: 平均</li>
+<li>影响: 严重</li>
+</ul>
+<p>注入攻击漏洞，例如SQL，OS 以及LDAP注入。这些攻击发生在当不可信的数据作为命令或者查询语句的一部分，被发送给解释器的时候。攻击者发送的恶意数据可以欺骗解释器，以执行计划外的命令或者在未被恰当授权时访问数据。</p>
+<h3 id="失效的身份认证"><a class="header" href="#失效的身份认证">失效的身份认证</a></h3>
+<ul>
+<li>可利用性:</li>
+<li>普遍性:</li>
+<li>可利用性:</li>
+<li>影响:</li>
+</ul>
+<p>与身份认证和会话管理相关的应用程序功能往往得不到正确的实现，这就导致了攻击者破坏密码、密匙、会话令牌或攻击其他的漏洞去冒充其他用户的身份。</p>
+<h3 id="敏感数据泄露"><a class="header" href="#敏感数据泄露">敏感数据泄露</a></h3>
+<ul>
+<li>可利用性:</li>
+<li>普遍性:</li>
+<li>可利用性:</li>
+<li>影响:</li>
+</ul>
+<p>当应用程序收到含有不可信的数据，在没有进行适当的验证和转义的情况下，就将它发送给一个网页浏览器，这就会产生跨站脚本攻击（简称XSS）。XSS允许攻击者在受害者的浏览器上执行脚本，从而劫持用户会话、危害网站、或者将用户转向至恶意网站。</p>
+<h3 id="xml-外部实体xxe"><a class="header" href="#xml-外部实体xxe">XML 外部实体（XXE）</a></h3>
+<ul>
+<li>可利用性:</li>
+<li>普遍性:</li>
+<li>可利用性:</li>
+<li>影响:</li>
+</ul>
+<p>当开发人员暴露一个对内部实现对象的引用时，例如，一个文件、目录或者数据库密匙，就会产生一个不安全的直接对象引用。在没有访问控制检测或其他保护时，攻击者会操控这些引用去访问未授权数据。</p>
+<h3 id="失效的访问控制"><a class="header" href="#失效的访问控制">失效的访问控制</a></h3>
+<ul>
+<li>可利用性:</li>
+<li>普遍性:</li>
+<li>可利用性:</li>
+<li>影响:</li>
+</ul>
+<p>好的安全需要对应用程序、框架、应用程序服务器、web服务器、数据库服务器和平台定义和执行安全配置。由于许多设置的默认值并不是安全的，因此，必须定义、实施和维护这些设置。这包含了对所有的软件保持及时地更新，包括所有应用程序的库文件。</p>
+<h3 id="安全配置错误"><a class="header" href="#安全配置错误">安全配置错误</a></h3>
+<ul>
+<li>可利用性:</li>
+<li>普遍性:</li>
+<li>可利用性:</li>
+<li>影响:</li>
+</ul>
+<p>许多Web应用程序没有正确保护敏感数据，如信用卡，税务ID和身份验证凭据。攻击者可能会窃取或篡改这些弱保护的数据以进行信用卡诈骗、身份窃取，或其他犯罪。敏感数据值需额外的保护，比如在存放或在传输过程中的加密，以及在与浏览器交换时进行特殊的预防措施。</p>
+<h3 id="跨站脚本xss"><a class="header" href="#跨站脚本xss">跨站脚本（XSS）</a></h3>
+<ul>
+<li>可利用性:</li>
+<li>普遍性:</li>
+<li>可利用性:</li>
+<li>影响:</li>
+</ul>
+<p>大多数Web应用程序在功能在UI中可见以前，验证功能级别的访问权限。但是，应用程序需要在每个功能被访问时在服务器端执行相同的访问控制检查。如果请求没有被验证，攻击者能够伪造请求以在未经适当授权时访问功能。</p>
+<h3 id="不安全的反序列化"><a class="header" href="#不安全的反序列化">不安全的反序列化</a></h3>
+<ul>
+<li>可利用性:</li>
+<li>普遍性:</li>
+<li>可利用性:</li>
+<li>影响:</li>
+</ul>
+<p>一个跨站请求伪造攻击迫使登录用户的浏览器将伪造的HTTP请求，包括该用户的会话cookie和其他认证信息，发送到一个存在漏洞的web应用程序。这就允许了攻击者迫使用户浏览器向存在漏洞的应用程序发送请求，而这些请求会被应用程序认为是用户的合法请求。</p>
+<h3 id="使用含有已知漏洞的组件"><a class="header" href="#使用含有已知漏洞的组件">使用含有已知漏洞的组件</a></h3>
+<ul>
+<li>可利用性:</li>
+<li>普遍性:</li>
+<li>可利用性:</li>
+<li>影响:</li>
+</ul>
+<p>组件，比如：库文件、框架和其它软件模块，几乎总是以全部的权限运行。如果一个带有漏洞的组件被利用，这种攻击可以造成更为严重的数据丢失或服务器接管。应用程序使用带有已知漏洞的组件会破坏应用程序防御系统，并使一系列可能的攻击和影响成为可能。</p>
+<h3 id="不足的日志记录和监控"><a class="header" href="#不足的日志记录和监控">不足的日志记录和监控</a></h3>
+<ul>
+<li>可利用性:</li>
+<li>普遍性:</li>
+<li>可利用性:</li>
+<li>影响:</li>
+</ul>
+<p>Web应用程序经常将用户重定向和转发到其他网页和网站，并且利用不可信的数据去判定目的页面。如果没有得到适当验证，攻击者可以重定向受害用户到钓鱼软件或恶意网站，或者使用转发去访问未授权的页面</p>
+<h2 id="2013"><a class="header" href="#2013">2013</a></h2>
+<blockquote>
+<p>http://www.owasp.org.cn/owasp-project/download/mobile-top-10-2013-2</p>
+</blockquote>
+<h2 id="2010"><a class="header" href="#2010">2010</a></h2>
+<blockquote>
+<p>http://www.owasp.org.cn/owasp-project/download/2010_OWASP_Top_10</p>
+</blockquote>
+<h2 id="2007"><a class="header" href="#2007">2007</a></h2>
+<blockquote>
+<p>https://owasp.org/www-pdf-archive/OWASP_Top_10_2007.pdf</p>
+</blockquote>
+<h2 id="2004"><a class="header" href="#2004">2004</a></h2>
+<h2 id="2003"><a class="header" href="#2003">2003</a></h2>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../archive/docker-permission-denied.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../archive/boot-device.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../archive/docker-permission-denied.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../archive/boot-device.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

@@ -1,0 +1,361 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>partition-disk - chg1f&#x27;s blog</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="keep it simple, stupid">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../index.html">CHG1F'S BLOG</a></li><li class="chapter-item affix "><li class="spacer"></li><li class="chapter-item "><a href="../archive/mount-android-image-file.html"><strong aria-hidden="true">1.</strong> mount-android-image-file</a></li><li class="chapter-item "><a href="../archive/ngrok-customized.html"><strong aria-hidden="true">2.</strong> ngrok-customized</a></li><li class="chapter-item "><a href="../archive/using-vim.html"><strong aria-hidden="true">3.</strong> using-vim</a></li><li class="chapter-item "><a href="../archive/vim.html"><strong aria-hidden="true">4.</strong> vim</a></li><li class="chapter-item "><a href="../archive/hello-world.html"><strong aria-hidden="true">5.</strong> hello-world</a></li><li class="chapter-item "><a href="../archive/redis_data_structure.html"><strong aria-hidden="true">6.</strong> redis_data_structure</a></li><li class="chapter-item "><a href="../archive/go-yaml.html"><strong aria-hidden="true">7.</strong> go-yaml</a></li><li class="chapter-item "><a href="../archive/how_to_root_android.html"><strong aria-hidden="true">8.</strong> how_to_root_android</a></li><li class="chapter-item "><a href="../archive/protobuf-c-cpp-string-error.html"><strong aria-hidden="true">9.</strong> protobuf-c-cpp-string-error</a></li><li class="chapter-item "><a href="../archive/git-conventions.html"><strong aria-hidden="true">10.</strong> git-conventions</a></li><li class="chapter-item "><a href="../archive/openresty-waf.html"><strong aria-hidden="true">11.</strong> openresty-waf</a></li><li class="chapter-item "><a href="../archive/adb-device-no-permissions.html"><strong aria-hidden="true">12.</strong> adb-device-no-permissions</a></li><li class="chapter-item "><a href="../archive/cups.html"><strong aria-hidden="true">13.</strong> cups</a></li><li class="chapter-item "><a href="../archive/nginx-502-error.html"><strong aria-hidden="true">14.</strong> nginx-502-error</a></li><li class="chapter-item "><a href="../archive/iwlwifi.html"><strong aria-hidden="true">15.</strong> iwlwifi</a></li><li class="chapter-item "><a href="../archive/concurency.html"><strong aria-hidden="true">16.</strong> concurency</a></li><li class="chapter-item "><a href="../archive/install-gentoo-and-archlinux.html"><strong aria-hidden="true">17.</strong> install-gentoo-and-archlinux</a></li><li class="chapter-item "><a href="../archive/make-livecd.html"><strong aria-hidden="true">18.</strong> make-livecd</a></li><li class="chapter-item "><a href="../archive/i3.html"><strong aria-hidden="true">19.</strong> i3</a></li><li class="chapter-item "><a href="../archive/linux-graphics.html"><strong aria-hidden="true">20.</strong> linux-graphics</a></li><li class="chapter-item "><a href="../archive/url-schema.html"><strong aria-hidden="true">21.</strong> url-schema</a></li><li class="chapter-item "><a href="../archive/linux_keyboard.html"><strong aria-hidden="true">22.</strong> linux_keyboard</a></li><li class="chapter-item "><a href="../archive/serial_connection.html"><strong aria-hidden="true">23.</strong> serial_connection</a></li><li class="chapter-item "><a href="../archive/pyyaml-parse-error.html"><strong aria-hidden="true">24.</strong> pyyaml-parse-error</a></li><li class="chapter-item "><a href="../archive/index.html"><strong aria-hidden="true">25.</strong> index</a></li><li class="chapter-item "><a href="../archive/python_coroutine.html"><strong aria-hidden="true">26.</strong> python_coroutine</a></li><li class="chapter-item "><a href="../archive/mitm-attack-via-v2ray.html"><strong aria-hidden="true">27.</strong> mitm-attack-via-v2ray</a></li><li class="chapter-item "><a href="../archive/kali_localectl_list_keymaps_no_such_file.html"><strong aria-hidden="true">28.</strong> kali_localectl_list_keymaps_no_such_file</a></li><li class="chapter-item "><a href="../archive/postwoman-cors.html"><strong aria-hidden="true">29.</strong> postwoman-cors</a></li><li class="chapter-item expanded "><a href="../archive/partition-disk.html" class="active"><strong aria-hidden="true">30.</strong> partition-disk</a></li><li class="chapter-item "><a href="../archive/ssl-disable-connect.html"><strong aria-hidden="true">31.</strong> ssl-disable-connect</a></li><li class="chapter-item "><a href="../archive/grub.html"><strong aria-hidden="true">32.</strong> grub</a></li><li class="chapter-item "><a href="../archive/network-protocol.html"><strong aria-hidden="true">33.</strong> network-protocol</a></li><li class="chapter-item "><a href="../archive/install-usb.html"><strong aria-hidden="true">34.</strong> install-usb</a></li><li class="chapter-item "><a href="../archive/network_topology.html"><strong aria-hidden="true">35.</strong> network_topology</a></li><li class="chapter-item "><a href="../archive/sed_bad_flag_in_substitute_command.html"><strong aria-hidden="true">36.</strong> sed_bad_flag_in_substitute_command</a></li><li class="chapter-item "><a href="../archive/docker-permission-denied.html"><strong aria-hidden="true">37.</strong> docker-permission-denied</a></li><li class="chapter-item "><a href="../archive/owasp_top10_webapp_sec_risks.html"><strong aria-hidden="true">38.</strong> owasp_top10_webapp_sec_risks</a></li><li class="chapter-item "><a href="../archive/boot-device.html"><strong aria-hidden="true">39.</strong> boot-device</a></li><li class="chapter-item "><a href="../archive/distribution.html"><strong aria-hidden="true">40.</strong> distribution</a></li><li class="chapter-item "><a href="../archive/ngrok-tunnel-not-found.html"><strong aria-hidden="true">41.</strong> ngrok-tunnel-not-found</a></li><li class="chapter-item "><a href="../archive/base64-encode-linux-and-windows.html"><strong aria-hidden="true">42.</strong> base64-encode-linux-and-windows</a></li><li class="chapter-item "><a href="../archive/netfilter.html"><strong aria-hidden="true">43.</strong> netfilter</a></li><li class="chapter-item "><a href="../archive/rdns.html"><strong aria-hidden="true">44.</strong> rdns</a></li><li class="chapter-item "><a href="../archive/android-flusing-device.html"><strong aria-hidden="true">45.</strong> android-flusing-device</a></li><li class="chapter-item "><a href="../archive/reinstall-manjaro-from-archlinux.html"><strong aria-hidden="true">46.</strong> reinstall-manjaro-from-archlinux</a></li><li class="chapter-item "><a href="../archive/fastboot-fake-plaseholder.html"><strong aria-hidden="true">47.</strong> fastboot-fake-plaseholder</a></li><li class="chapter-item "><a href="../archive/tmux.html"><strong aria-hidden="true">48.</strong> tmux</a></li><li class="chapter-item "><a href="../archive/docker-compose-network.html"><strong aria-hidden="true">49.</strong> docker-compose-network</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">chg1f&#x27;s blog</h1>
+
+                    <div class="right-buttons">
+                        <a href="https://github.com/chg1f/chg1f.github.io/tree/mdbook" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/chg1f/chg1f.github.io/tree/mdbook/content/archive/partition-disk.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <hr />
+<p>title: "Partition Disk" # Title of the blog post.
+date: 2021-01-02
+updated: 2021-01-02
+toc: true
+categories:</p>
+<ul>
+<li>note
+tags:</li>
+<li>partition</li>
+<li>disk</li>
+<li>hardware</li>
+</ul>
+<hr />
+<h2 id="partition-tool"><a class="header" href="#partition-tool">Partition Tool</a></h2>
+<blockquote>
+<p><code>fdisk</code>和<code>parted</code>都是分区实用程序。 <code>fdisk</code>是众所周知的，稳定的，并且推荐用于MBR分区布局，而<code>parted</code>是支持GPT分区的第一个Linux块设备管理实用程序之一。 喜欢<code>fdisk</code>的用户界面的用户可以使用 <code>gdisk</code> （GPT fdisk）作为<code>parted</code>的替代。</p>
+</blockquote>
+<h3 id="parted"><a class="header" href="#parted">parted</a></h3>
+<h3 id="fdisk"><a class="header" href="#fdisk">fdisk</a></h3>
+<h3 id="gdisk"><a class="header" href="#gdisk">gdisk</a></h3>
+<h2 id="partition-table"><a class="header" href="#partition-table">Partition Table</a></h2>
+<h3 id="mbr"><a class="header" href="#mbr">MBR</a></h3>
+<p>主引导记录MBR (Master Boot Record)对分区的起始扇区和长度使用32比特的标识符，它支持三种分区类型：主分区、扩展分区和逻辑分区。主分区把它们的信息存储在主引导记录里一个非常小的空间里，通常是512字节，因为这个空间太小了，所以系统只支持四个主分区。（例如从 /dev/sda1 到/dev/sda4）</p>
+<h3 id="gpt"><a class="header" href="#gpt">GPT</a></h3>
+<p>GPT(GUID Partition Table)为分区使用64比特标识符，它用来存储分区信息的空间也远比MBR的512字节要大，GPT磁盘它也不对分区的数量作限制。分区的大小限制可以达到8ZiB。 译者注：</p>
+<pre><code>1ZiB = 1,024 EiB
+1EiB = 1024 PiB
+1PiB = 1024 TiB
+1TiB = 1024 GiB
+1GiB = 1024 MiB
+1MiB = 1024 KiB
+1KiB = 1024 B
+</code></pre>
+<p>当操作系统和系统固件之间的软件接口是UEFI (相对于BIOS)时，GPT几乎是必选的，因为这里MBR会引起很多兼容性问题。</p>
+<p>GPT还利用校验和和冗余。 它携带CRC32校验和以检测报头和分区表中的错误，并在磁盘的末尾有一个备份GPT。 此备份表可用于恢复磁盘开头附近主GPT的损坏。</p>
+<h2 id="partition-foramt"><a class="header" href="#partition-foramt">Partition Foramt</a></h2>
+<h3 id="btrfs"><a class="header" href="#btrfs">btrfs</a></h3>
+<p>是下一代文件系统，提供了许多高级功能，如快照，通过校验和自我修复、 透明压缩、 子卷和集成 RAID。几个发行版已经开始将它作为一个默认的选项,但它还未为生产工作做好准备。文件系统报告崩溃是常见的。其开发人员敦促人们运行最新的内核版本来解决安全问题,以及老的问题。 这种情况已经很多年了,现在使用它还为时过早。如果出现变更，以及发生了变化，解决错误问题，都很少往旧内核注入补丁。请谨慎使用这个文件系统!</p>
+<h3 id="ext2"><a class="header" href="#ext2">ext2</a></h3>
+<p>是经考验证明可靠的Linux文件系统，但是没有元数据日志，这意味这在启动系统时的ext2文件系统的日常检查相当耗时。现在相当一部分的新一代的日志文件系统都可以非常迅速检查一致性，因此比那些非日志文件系统更受欢迎。当你启动系统碰巧遇到文件系统状态不一致时，日志文件系统不会在那里耽搁很长时间。</p>
+<h3 id="ext3"><a class="header" href="#ext3">ext3</a></h3>
+<p>是ext2文件系统的带日志版本，提供了元数据日志模式以快速恢复数据。此外还提供了其他增强的日志模式，如完整数据日志模式和有序数据日志模式。它使用了HTree索引，在几乎所有的情况下都能保持高性能。简而言之，ext3是非常好及可靠的文件系统。</p>
+<h3 id="ext4"><a class="header" href="#ext4">ext4</a></h3>
+<p>最初创建为ext3的一个分支，EXT4带来了新的功能，性能改进和去除中度更改磁盘格式大小限制。它可以跨越体积高达1的EB并用16 TB最大文件大小。取而代之的是经典的ext2/3位块分配的ext4的使用范围，这对提高大文件的性能，并减少碎片。的Ext4还提供了更为复杂的块分配算法（延迟分配和多嵌段分配）给文件系统驱动更多的方式来优化数据的布局在磁盘上。 EXT4是推荐的通用所有平台的文件系统。</p>
+<h3 id="f2fs"><a class="header" href="#f2fs">f2fs</a></h3>
+<p>这个文件系统最初由三星创建用于NAND闪存，是一种闪存文件系统 从直到2016年第二季度起，这个文件系统仍然被认为不成熟。把Gentoo安装到microSD卡，USB驱动器或其他基于闪存的存储设备时使用它是一个不错的选择。</p>
+<h3 id="jfs"><a class="header" href="#jfs">JFS</a></h3>
+<p>是IBM的高性能日志文件系统。JFS是一个轻量级的、快速的和稳定的基于B+树的文件系统，在很多情况下都有很好的表现。</p>
+<h3 id="reiserfs"><a class="header" href="#reiserfs">ReiserFS</a></h3>
+<p>是基于B+树的文件系统，它有着非常全面的性能，特别时在处理很多小文件的时候，虽然会占用多一点CPU。ReiserFS相比其他文件系统显得受维护的不够。</p>
+<h3 id="xfs"><a class="header" href="#xfs">XFS</a></h3>
+<p>是一种带元数据日志的文件系统，它有一个健壮的特性集，并且对可伸缩性进行了优化。XFS似乎对各种各样的硬件问题显得不够宽容。</p>
+<h3 id="vfat"><a class="header" href="#vfat">vfat</a></h3>
+<p>也称为FAT32，被支持Linux，但不支持任何权限设置。它主要用于互操作性与其他操作系统（主要是微软的Windows），但也是很有必要的一些系统固件（如UEFI）的支持。</p>
+<h3 id="ntfs"><a class="header" href="#ntfs">NTFS</a></h3>
+<p>这个“新技术”的文件系统是Microsoft Windows的旗舰文件系统。 与上面的vfat类似，它不存储BSD或Linux正常工作所需的权限设置或扩展属性，因此它不能用作根文件系统。 它应该'只'用于与Microsoft Windows系统的互操作性（注意只强调）。</p>
+<h2 id="other"><a class="header" href="#other">Other</a></h2>
+<h3 id="lvm"><a class="header" href="#lvm">LVM</a></h3>
+<blockquote>
+<p>https://wiki.archlinux.org/index.php/LVM_
+</br>
+https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)</p>
+</blockquote>
+<h4 id="pv"><a class="header" href="#pv">PV</a></h4>
+<ol>
+<li><code>pvs</code></li>
+<li><code>pvdisplay</code></li>
+</ol>
+<h4 id="vg"><a class="header" href="#vg">VG</a></h4>
+<ol>
+<li><code>vgs</code></li>
+<li><code>vgdisplay</code></li>
+</ol>
+<h4 id="lv"><a class="header" href="#lv">LV</a></h4>
+<ol>
+<li><code>lvs</code></li>
+<li><code>lvdisplay</code></li>
+<li><code>lvextend</code></li>
+</ol>
+<h3 id="luks"><a class="header" href="#luks">LUKS</a></h3>
+<h2 id="mount"><a class="header" href="#mount">Mount</a></h2>
+<h3 id="fstab"><a class="header" href="#fstab">Fstab</a></h3>
+<blockquote>
+<p>/etc/fstab
+</br>
+https://wiki.gentoo.org/wiki/Fstab
+</br>
+https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/System#About_fstab</p>
+<pre><code>&lt;filesystem&gt; &lt;mountpoint&gt; &lt;type&gt; &lt;options&gt; &lt;dump&gt; &lt;pass&gt;
+</code></pre>
+</blockquote>
+<h4 id="filesystem"><a class="header" href="#filesystem">filesystem</a></h4>
+<blockquote>
+<p>第一个字段显示要挂载的特殊 block 设备或远程文件系统。 有几种设备标识符可用于特殊块设备节点，包括设备文件路径，文件系统标签，UUID，分区标签以及UUID。</p>
+</blockquote>
+<ol>
+<li>UUID</li>
+<li>LABEL</li>
+</ol>
+<h4 id="mountpoint"><a class="header" href="#mountpoint">mountpoint</a></h4>
+<blockquote>
+<p>第二个字段是分区挂载点，也就是分区应该挂载到的地方</p>
+</blockquote>
+<h4 id="type"><a class="header" href="#type">type</a></h4>
+<blockquote>
+<p>第三个字段给出分区所用的文件系统
+</br>
+<a href="http://blog.chongiofai.com/note/partition-disk/#partition-foramt">Partition Format</a></p>
+</blockquote>
+<h4 id="options"><a class="header" href="#options">options</a></h4>
+<blockquote>
+<p>第四个字段给出的是挂载分区时mount命令所用的挂载选项。由于每个文件系统都有自己的挂载选项，我们建议你阅读mount手册（man mount）以获得所有挂载选项的列表。多个挂载选项之间是用逗号分隔的。
+</br>
+https://wiki.gentoo.org/wiki/Mount
+</br>
+http://www.skrenta.com/rt/man/mount.8.html</p>
+</blockquote>
+<h4 id="dump"><a class="header" href="#dump">dump</a></h4>
+<blockquote>
+<p>第五个字段是给dump使用的，用以决定这个分区是否需要dump。一般情况下，你可以把该字段设为0（零）。</p>
+</blockquote>
+<h4 id="pass"><a class="header" href="#pass">pass</a></h4>
+<blockquote>
+<p>第六个字段是给fsck使用的，用以决定系统非正常关机之后文件系统的检查顺序。根文件系统应该为1，而其它的应该为2（如果不需要文件系统自检的话可以设为0）。</p>
+</blockquote>
+<h2 id="references"><a class="header" href="#references">References</a></h2>
+<ul>
+<li>https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Disks/zh-cn#%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../archive/postwoman-cors.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../archive/ssl-disable-connect.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../archive/postwoman-cors.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../archive/ssl-disable-connect.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

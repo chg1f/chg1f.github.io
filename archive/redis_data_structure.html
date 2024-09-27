@@ -1,0 +1,494 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>redis_data_structure - chg1f&#x27;s blog</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="keep it simple, stupid">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item affix "><a href="../index.html">CHG1F'S BLOG</a></li><li class="chapter-item affix "><li class="spacer"></li><li class="chapter-item "><a href="../archive/mount-android-image-file.html"><strong aria-hidden="true">1.</strong> mount-android-image-file</a></li><li class="chapter-item "><a href="../archive/ngrok-customized.html"><strong aria-hidden="true">2.</strong> ngrok-customized</a></li><li class="chapter-item "><a href="../archive/using-vim.html"><strong aria-hidden="true">3.</strong> using-vim</a></li><li class="chapter-item "><a href="../archive/vim.html"><strong aria-hidden="true">4.</strong> vim</a></li><li class="chapter-item "><a href="../archive/hello-world.html"><strong aria-hidden="true">5.</strong> hello-world</a></li><li class="chapter-item expanded "><a href="../archive/redis_data_structure.html" class="active"><strong aria-hidden="true">6.</strong> redis_data_structure</a></li><li class="chapter-item "><a href="../archive/go-yaml.html"><strong aria-hidden="true">7.</strong> go-yaml</a></li><li class="chapter-item "><a href="../archive/how_to_root_android.html"><strong aria-hidden="true">8.</strong> how_to_root_android</a></li><li class="chapter-item "><a href="../archive/protobuf-c-cpp-string-error.html"><strong aria-hidden="true">9.</strong> protobuf-c-cpp-string-error</a></li><li class="chapter-item "><a href="../archive/git-conventions.html"><strong aria-hidden="true">10.</strong> git-conventions</a></li><li class="chapter-item "><a href="../archive/openresty-waf.html"><strong aria-hidden="true">11.</strong> openresty-waf</a></li><li class="chapter-item "><a href="../archive/adb-device-no-permissions.html"><strong aria-hidden="true">12.</strong> adb-device-no-permissions</a></li><li class="chapter-item "><a href="../archive/cups.html"><strong aria-hidden="true">13.</strong> cups</a></li><li class="chapter-item "><a href="../archive/nginx-502-error.html"><strong aria-hidden="true">14.</strong> nginx-502-error</a></li><li class="chapter-item "><a href="../archive/iwlwifi.html"><strong aria-hidden="true">15.</strong> iwlwifi</a></li><li class="chapter-item "><a href="../archive/concurency.html"><strong aria-hidden="true">16.</strong> concurency</a></li><li class="chapter-item "><a href="../archive/install-gentoo-and-archlinux.html"><strong aria-hidden="true">17.</strong> install-gentoo-and-archlinux</a></li><li class="chapter-item "><a href="../archive/make-livecd.html"><strong aria-hidden="true">18.</strong> make-livecd</a></li><li class="chapter-item "><a href="../archive/i3.html"><strong aria-hidden="true">19.</strong> i3</a></li><li class="chapter-item "><a href="../archive/linux-graphics.html"><strong aria-hidden="true">20.</strong> linux-graphics</a></li><li class="chapter-item "><a href="../archive/url-schema.html"><strong aria-hidden="true">21.</strong> url-schema</a></li><li class="chapter-item "><a href="../archive/linux_keyboard.html"><strong aria-hidden="true">22.</strong> linux_keyboard</a></li><li class="chapter-item "><a href="../archive/serial_connection.html"><strong aria-hidden="true">23.</strong> serial_connection</a></li><li class="chapter-item "><a href="../archive/pyyaml-parse-error.html"><strong aria-hidden="true">24.</strong> pyyaml-parse-error</a></li><li class="chapter-item "><a href="../archive/index.html"><strong aria-hidden="true">25.</strong> index</a></li><li class="chapter-item "><a href="../archive/python_coroutine.html"><strong aria-hidden="true">26.</strong> python_coroutine</a></li><li class="chapter-item "><a href="../archive/mitm-attack-via-v2ray.html"><strong aria-hidden="true">27.</strong> mitm-attack-via-v2ray</a></li><li class="chapter-item "><a href="../archive/kali_localectl_list_keymaps_no_such_file.html"><strong aria-hidden="true">28.</strong> kali_localectl_list_keymaps_no_such_file</a></li><li class="chapter-item "><a href="../archive/postwoman-cors.html"><strong aria-hidden="true">29.</strong> postwoman-cors</a></li><li class="chapter-item "><a href="../archive/partition-disk.html"><strong aria-hidden="true">30.</strong> partition-disk</a></li><li class="chapter-item "><a href="../archive/ssl-disable-connect.html"><strong aria-hidden="true">31.</strong> ssl-disable-connect</a></li><li class="chapter-item "><a href="../archive/grub.html"><strong aria-hidden="true">32.</strong> grub</a></li><li class="chapter-item "><a href="../archive/network-protocol.html"><strong aria-hidden="true">33.</strong> network-protocol</a></li><li class="chapter-item "><a href="../archive/install-usb.html"><strong aria-hidden="true">34.</strong> install-usb</a></li><li class="chapter-item "><a href="../archive/network_topology.html"><strong aria-hidden="true">35.</strong> network_topology</a></li><li class="chapter-item "><a href="../archive/sed_bad_flag_in_substitute_command.html"><strong aria-hidden="true">36.</strong> sed_bad_flag_in_substitute_command</a></li><li class="chapter-item "><a href="../archive/docker-permission-denied.html"><strong aria-hidden="true">37.</strong> docker-permission-denied</a></li><li class="chapter-item "><a href="../archive/owasp_top10_webapp_sec_risks.html"><strong aria-hidden="true">38.</strong> owasp_top10_webapp_sec_risks</a></li><li class="chapter-item "><a href="../archive/boot-device.html"><strong aria-hidden="true">39.</strong> boot-device</a></li><li class="chapter-item "><a href="../archive/distribution.html"><strong aria-hidden="true">40.</strong> distribution</a></li><li class="chapter-item "><a href="../archive/ngrok-tunnel-not-found.html"><strong aria-hidden="true">41.</strong> ngrok-tunnel-not-found</a></li><li class="chapter-item "><a href="../archive/base64-encode-linux-and-windows.html"><strong aria-hidden="true">42.</strong> base64-encode-linux-and-windows</a></li><li class="chapter-item "><a href="../archive/netfilter.html"><strong aria-hidden="true">43.</strong> netfilter</a></li><li class="chapter-item "><a href="../archive/rdns.html"><strong aria-hidden="true">44.</strong> rdns</a></li><li class="chapter-item "><a href="../archive/android-flusing-device.html"><strong aria-hidden="true">45.</strong> android-flusing-device</a></li><li class="chapter-item "><a href="../archive/reinstall-manjaro-from-archlinux.html"><strong aria-hidden="true">46.</strong> reinstall-manjaro-from-archlinux</a></li><li class="chapter-item "><a href="../archive/fastboot-fake-plaseholder.html"><strong aria-hidden="true">47.</strong> fastboot-fake-plaseholder</a></li><li class="chapter-item "><a href="../archive/tmux.html"><strong aria-hidden="true">48.</strong> tmux</a></li><li class="chapter-item "><a href="../archive/docker-compose-network.html"><strong aria-hidden="true">49.</strong> docker-compose-network</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">chg1f&#x27;s blog</h1>
+
+                    <div class="right-buttons">
+                        <a href="https://github.com/chg1f/chg1f.github.io/tree/mdbook" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/chg1f/chg1f.github.io/tree/mdbook/content/archive/redis_data_structure.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <hr />
+<p>title: "Redis Data Structure"
+description: "Redis数据结据"
+tags:</p>
+<ul>
+<li>redis</li>
+</ul>
+<hr />
+<blockquote>
+<p>Docs</p>
+<p>https://github.com/redis/redis-doc/blob/master/topics/data-types-intro.md</p>
+<p>https://github.com/redis/redis-doc/blob/master/topics/data-types.md</p>
+</blockquote>
+<blockquote>
+<p>Learning Test Env</p>
+<pre><code class="language-bash">docker run --rm -dt --name learning redis:5.0.9 redis-cli &amp;&amp; docker exec -it learning redis-cli
+</code></pre>
+</blockquote>
+<h2 id="note"><a class="header" href="#note">Note</a></h2>
+<ol>
+<li>About key</li>
+</ol>
+<ul>
+<li><code>KEY</code>设置太长不是一件好事，如大于<code>1024byte</code>，对于内存及寻找都会有影响，建议可以用<code>SHA1</code>压缩</li>
+<li><code>KEY</code>设置太短不是一件好事，因为可读性会变低</li>
+<li><code>KEY</code>的最大值为<code>512MB</code></li>
+</ul>
+<ol start="2">
+<li>About creation and removal of keys</li>
+</ol>
+<ul>
+<li>当添加值到不存在键中，添加时会创建一个相应数据结构</li>
+<li>当删除值使键中数据类型为空，键会自动销毁，<code>Stream</code>除外</li>
+<li>调用如<code>LLEN</code>空键只读命令或删除命令，总返回与空链一致结果</li>
+</ul>
+<pre><code>127.0.0.1:6379&gt; get a
+(nil)
+127.0.0.1:6379&gt; lpush a a
+(integer) 1
+127.0.0.1:6379&gt; get a
+(error) WRONGTYPE Operation against a key holding the wrong kind of value
+127.0.0.1:6379&gt; lpop a
+"a"
+127.0.0.1:6379&gt; get a
+(nil)
+</code></pre>
+<h2 id="commands"><a class="header" href="#commands">Commands</a></h2>
+<ul>
+<li><code>EXISTS KEY [KEY ...]</code></li>
+<li><code>TYPE KEY</code></li>
+<li><code>DEL KEY [KEY ...]</code></li>
+<li><code>EXPIRE KEY SECONDS</code></li>
+<li><code>TTL KEY</code></li>
+<li><code>PEXPIRE KEY MILLISECONDS</code></li>
+<li><code>PTTL KEY</code></li>
+<li><code>PERSIST KEY</code></li>
+</ul>
+<pre><code>127.0.0.1:6379&gt; set ex a
+OK
+127.0.0.1:6379&gt; del ne
+(integer) 0
+127.0.0.1:6379&gt; type ex
+string
+127.0.0.1:6379&gt; type ne
+none
+127.0.0.1:6379&gt; exists ex
+(integer) 1
+127.0.0.1:6379&gt; exists ne
+(integer) 0
+127.0.0.1:6379&gt; del ex
+(integer) 1
+127.0.0.1:6379&gt; del ne
+(integer) 0
+127.0.0.1:6379&gt; set ep a
+OK
+127.0.0.1:6379&gt; expire ep 5
+(integer) 1
+127.0.0.1:6379&gt; get ep
+"a"
+127.0.0.1:6379&gt; get ep
+(nil)
+127.0.0.1:6379&gt; set ep a
+OK
+127.0.0.1:6379&gt; expire ep 100
+(integer) 1
+127.0.0.1:6379&gt; ttl ep
+(integer) 97
+127.0.0.1:6379&gt; pttl ep
+(integer) 82937
+127.0.0.1:6379&gt; persist ep
+(integer) 1
+127.0.0.1:6379&gt; persist ep
+(integer) 0
+127.0.0.1:6379&gt; pttl ep
+(integer) -1
+127.0.0.1:6379&gt; ttl ep
+(integer) -1
+</code></pre>
+<h2 id="string"><a class="header" href="#string">String</a></h2>
+<p>Binary-safe strings.</p>
+<h3 id="note-1"><a class="header" href="#note-1">Note</a></h3>
+<ul>
+<li>
+<p>About value</p>
+<ul>
+<li><code>VALUE</code>最大值为<code>512MB</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="commands-1"><a class="header" href="#commands-1">Commands</a></h3>
+<ul>
+<li><code>SET KEY VALUE [expiration EX seconds|PX milliseconds] [NX|XX]</code></li>
+<li><code>GET KEY</code></li>
+<li><code>INCR KEY</code></li>
+<li><code>INCRBY KEY INCREMENT</code></li>
+<li><code>DECR KEY</code></li>
+<li><code>DECRBY KEY DECREMENT</code></li>
+<li><code>MSET KEY VALUE [KEY VALUE ...]</code></li>
+<li><code>MGET KEY [KEY ...]</code></li>
+</ul>
+<pre><code>127.0.0.1:6379&gt; set t1 1
+OK
+127.0.0.1:6379&gt; get t1
+"1"
+127.0.0.1:6379&gt; incr t2
+(integer) 1
+127.0.0.1:6379&gt; incrby t2 10
+(integer) 11
+127.0.0.1:6379&gt; decr t2
+(integer) 10
+127.0.0.1:6379&gt; decrby t2 10
+(integer) 0
+127.0.0.1:6379&gt; decr t2
+(integer) -1
+127.0.0.1:6379&gt; incr t1
+(integer) 2
+127.0.0.1:6379&gt; get t1
+"2"
+127.0.0.1:6379&gt; set t3 a
+OK
+127.0.0.1:6379&gt; incr t3
+(error) ERR value is not an integer or out of range
+127.0.0.1:6379&gt; mset t4 1 t5 b
+OK
+127.0.0.1:6379&gt; mget t4 t5 t6
+1) "1"
+2) "b"
+3) (nil)
+127.0.0.1:6379&gt; set t7 c nx
+OK
+127.0.0.1:6379&gt; set t8 c xx
+(nil)
+127.0.0.1:6379&gt; mget t7 t8
+1) "c"
+2) (nil)
+</code></pre>
+<h2 id="list"><a class="header" href="#list">List</a></h2>
+<p>collections of string elements sorted according to the order of insertion. They are basically linked lists.</p>
+<h3 id="note-2"><a class="header" href="#note-2">Note</a></h3>
+<ul>
+<li>内部车现为链表结构</li>
+</ul>
+<h3 id="commands-2"><a class="header" href="#commands-2">Commands</a></h3>
+<ul>
+<li><code>LPUSH KEY VALUE [VALUE ...]</code></li>
+<li><code>RPUSH KEY VALUE [VALUE ...]</code></li>
+<li><code>LRANGE KEY START STOP</code></li>
+<li><code>LTRIM KEY START STOP</code></li>
+<li><code>LPOP KEY</code></li>
+<li><code>RPOP KEY</code></li>
+<li><code>BLPOP KEY [KEY ...] TIMEOUT</code></li>
+<li><code>BRPOP KEY [KEY ...] TIMEOUT</code></li>
+<li><code>LLEN KEY</code></li>
+</ul>
+<pre><code>127.0.0.1:6379&gt; lpush tl 1 2 3 4 a b c d
+(integer) 8
+127.0.0.1:6379&gt; rpush tl q w e r 5 6 7 8
+(integer) 16
+127.0.0.1:6379&gt; lrange tl 0 -1
+ 1) "d"
+ 2) "c"
+ 3) "b"
+ 4) "a"
+ 5) "4"
+ 6) "3"
+ 7) "2"
+ 8) "1"
+ 9) "q"
+10) "w"
+11) "e"
+12) "r"
+13) "5"
+14) "6"
+15) "7"
+16) "8"
+127.0.0.1:6379&gt; ltrim tl 1 -2
+OK
+127.0.0.1:6379&gt; lrange tl 0 -1
+ 1) "c"
+ 2) "b"
+ 3) "a"
+ 4) "4"
+ 5) "3"
+ 6) "2"
+ 7) "1"
+ 8) "q"
+ 9) "w"
+10) "e"
+11) "r"
+12) "5"
+13) "6"
+14) "7"
+127.0.0.1:6379&gt; lpop tl
+"c"
+127.0.0.1:6379&gt; rpop tl
+"7"
+127.0.0.1:6379&gt; lrange tl 0 -1
+ 1) "b"
+ 2) "a"
+ 3) "4"
+ 4) "3"
+ 5) "2"
+ 6) "1"
+ 7) "q"
+ 8) "w"
+ 9) "e"
+10) "r"
+11) "5"
+12) "6"
+127.0.0.1:6379&gt; del tl
+(integer) 1
+127.0.0.1:6379&gt; lrange tl 0 -1
+(empty list or set)
+127.0.0.1:6379&gt; blpop tl 1
+(nil)
+(1.00s)
+127.0.0.1:6379&gt; blpop tl 10
+1) "tl"
+2) "10"
+(8.31s)
+127.0.0.1:6379&gt; brpop tl ne 10
+1) "tl"
+2) "ee"
+(5.93s)
+127.0.0.1:6379&gt; brpop tl ne 10
+1) "tl"
+2) "e2"
+127.0.0.1:6379&gt; lpush tl 1 2 3
+127.0.0.1:6379&gt; llen tl
+(integer) 3
+</code></pre>
+<h2 id="set"><a class="header" href="#set">Set</a></h2>
+<p>collections of unique, unsorted string elements.</p>
+<h2 id="sorted-set"><a class="header" href="#sorted-set">Sorted Set</a></h2>
+<p>similar to Sets but where every string element is associated to a floating number value, called score. The elements are always taken sorted by their score, so unlike Sets it is possible to retrieve a range of elements (for example you may ask: give me the top 10, or the bottom 10).</p>
+<h2 id="hashe"><a class="header" href="#hashe">Hashe</a></h2>
+<p>which are maps composed of fields associated with values. Both the field and the value are strings. This is very similar to Ruby or Python hashes.</p>
+<h2 id="bit-array"><a class="header" href="#bit-array">Bit Array</a></h2>
+<p>it is possible, using special commands, to handle String values like an array of bits: you can set and clear individual bits, count all the bits set to 1, find the first set or unset bit, and so forth.</p>
+<h2 id="hyperloglogs"><a class="header" href="#hyperloglogs">HyperLogLogs</a></h2>
+<p>this is a probabilistic data structure which is used in order to estimate the cardinality of a set. Don't be scared, it is simpler than it seems... See later in the HyperLogLog section of this tutorial.</p>
+<h2 id="streams"><a class="header" href="#streams">Streams</a></h2>
+<p>append-only collections of map-like entries that provide an abstract log data type. They are covered in depth in the Introduction to Redis Streams.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../archive/hello-world.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../archive/go-yaml.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../archive/hello-world.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../archive/go-yaml.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
