@@ -1,11 +1,7 @@
 ---
 title: "sed bad flag in substitute command"
-description: ""
 date: 2021-07-16T10:31:08+08:00
-tags:
-- sed
-- cli
-- macOS
+tags: ["sed", "macos"]
 ---
 
 ## Environment

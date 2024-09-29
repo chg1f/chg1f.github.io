@@ -1,10 +1,7 @@
 ---
 title: "Grub"
 date: 2020-01-26
-categories:
-- note
-tags:
-- grub
+tags: ["grub"]
 ---
 
 > 之前grub搞了个在U盘上引就安装系统，不过引导不了windows的安装装，和和和之前又洗了，之后再玩玩，也想想要怎么玩，因为也想搞个linux在U盘上

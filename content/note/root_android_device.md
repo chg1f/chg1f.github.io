@@ -32,7 +32,7 @@ sudo apt install android-tools-fastboot
 
 ### Install Magisk
 
-#### Extract `boot.img` and `recovery.img` from OTA package
+#### Extract `payload.bin` from OTA package
 
 > Used `OnePlus8ProHydrogen_15.H.31_OTA_0310_all_2010291922_15e1f3321849475e.zip`
 > <https://www.oneplus.com/cn/support/softwareupgrade>
@@ -99,8 +99,6 @@ tree payload_dumper
 # └── update_metadata_pb2.py
 ```
 
-3. 其中在刷`Magisk`比较有用的是`boot.img`及`recovery.img`，可以使用`Magisk`对`boot.img`或`recovery.img`进行修改，修改为`magisk_patch.img`然后对相应分区`flash`
-
 #### Modify `boot.img`/`recovery.img` with `Magisk`, and flash it
 
 ```bash
@@ -121,6 +119,7 @@ sudo fastboot continue # OR sudo fastboot reboot
 
 ## Extends
 
+### Mounted partitions
 ```bash
 adb shell
 # OnePlus8Pro:/ $ mount
@@ -353,10 +352,70 @@ adb shell
 # Binary files OnePlus8ProHydrogen_15.H.31_OTA_0310_all_2010291922_15e1f3321849475e/payload_dumper/output/vendor.img and OnePlus8ProOxygen_15.E.23_OTA_023_all_2008300442_568e6/payload_dumper/output/vendor.img differ
 # Binary files OnePlus8ProHydrogen_15.H.31_OTA_0310_all_2010291922_15e1f3321849475e/payload_dumper/output/xbl_config.img and OnePlus8ProOxygen_15.E.23_OTA_023_all_2008300442_568e6/payload_dumper/output/xbl_config.img differ
 # Binary files OnePlus8ProHydrogen_15.H.31_OTA_0310_all_2010291922_15e1f3321849475e/payload_dumper/output/xbl.img and OnePlus8ProOxygen_15.E.23_OTA_023_all_2008300442_568e6/payload_dumper/output/xbl.img differ
-
 ```
 
-### 后续
+
+### Next Steps
+
+- BUG: android 11 with magisk 21.1 has serious lag and cannot be used normally
+- TODO: OP8P system rollback to android 10 O2 OS
+- TODO: install magisk to root
+- TODO: install adblock
+- TODO: modify system partition to install H2 applications
+
+
+### Reference
+
+> <https://forum.xda-developers.com/showthread.php?t=2277112>
+> <https://forum.xda-developers.com/oneplus-8-pro>
+> <https://forum.xda-developers.com/oneplus-8-pro/how-to/guide-how-to-root-oneplus-8-pro-twrp-t4083981>
+> <https://magiskmanager.com/>
+> <https://topjohnwu.github.io/Magisk/install.html>
+> <https://topjohnwu.github.io/Magisk/install.html#magisk-in-recovery>
+> <https://source.android.com/setup/build/running>
+
+
+
+### Draft
+
+
+0.
+> https://source.android.com/setup/build/running
+```bash
+adb devi
+adb reboot
+```
+
+1. Unlocking Bootloader
+> https://source.android.com/devices/bootloader/locking_unlocking
+```bash
+fastboot flashing unlock
+```
+
+2. Flashing boot partition
+
+bootloader
+root permission
+
+recovery
+fastboot
+adb
+
+
+- 如何从OTA升级包获取boot.img
+```bash
+$ unzip {OTA package}
+$ cd {OTA package}
+$ git clone https://github.com/vm03/payload_dumper.git
+$ pip install -r payload_dumper/requirements.txt
+$ python payload_dumper/payload_dumper.py payload.bin
+$ file output/boot.img
+```
+
+- magisk
+> https://github.com/topjohnwu/Magisk
+- edxposed
+> https://github.com/ElderDrivers/EdXposed
 
 1. 在后`/system`分区发现系统装不可删的`APP`，网上说提权后可删，因为`Android11`用`Magisk21.1`卡死了暂时没有继续尝试
 
@@ -376,32 +435,3 @@ adb shell
 3. 对于其他，好像说华为分区方法不同，刷法也有不同，还有现在`Android`的`boot`分区有用`slot a`及`slot b`可以用`fastboot flash boot_a boot.img`或`flashboot flash boot boot.img --slot all`指定分区或者全刷
 
 4. 还有好些可以玩的，对于各`img`文件解释分析，对`system.img`的修改，各种第三方`ROM`和使用不同的`Kernel`，先做得笔记`# TODO:`一下，之后的未完待续
-
-### 缺陷
-
-1. Android11+Magisk20有严重卡顿无法正常使用
-
-### 参考资料
-
-> <https://forum.xda-developers.com/showthread.php?t=2277112>
->
-> <https://forum.xda-developers.com/oneplus-8-pro>
->
-> <https://forum.xda-developers.com/oneplus-8-pro/how-to/guide-how-to-root-oneplus-8-pro-twrp-t4083981>
->
-> <https://magiskmanager.com/>
->
-> <https://topjohnwu.github.io/Magisk/install.html>
->
-> <https://topjohnwu.github.io/Magisk/install.html#magisk-in-recovery>
->
-> <https://source.android.com/setup/build/running>
-
-> 目标周更Blog的第一篇...不过写好了发布脚本了,为周更的懒又...溜了溜了
-
-TODO:
-
-1. OP8P system rollback to android 10 O2 OS
-2. install magisk to root
-3. install adblock
-4. modify system partition to install H2 applications

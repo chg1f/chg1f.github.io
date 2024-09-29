@@ -1,21 +1,20 @@
 ---
-title: "Git Conventions"
-description: ""
+title: "Git Convention"
 date: "2022-07-19"
-tags:
-- git
-TODO:
+tags: ["note", "git", "convention"]
 ---
 
-> REF: https://git-scm.com/book/en/v3
+## Convention
 
-# Branch
+> https://git-scm.com/book/en/v3
 
-> REF: https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow
+### Branch
 
-> REF: https://github.com/nvie/gitflow
+> https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow
 
-> REF: https://nvie.com/posts/a-successful-git-branching-model/
+> https://github.com/nvie/gitflow
+
+> https://nvie.com/posts/a-successful-git-branching-model/
 
 |type|description|
 |:-:|:-|
@@ -25,15 +24,13 @@ TODO:
 |develop|A develop branch is created from main|
 |master(or main)|The main branch stores the official release history, and the develop branch serves as an integration branch for features. It's also convenient to tag all commits in the main branch with a version number.|
 
-![@GitFlow](https://nvie.com/img/git-model@2x.png)
+### Commit
 
-# Commit
+> https://github.com/angular/angular/blob/master/CONTRIBUTING.md#-commit-message-format
 
-> REF: https://github.com/angular/angular/blob/master/CONTRIBUTING.md#-commit-message-format
+> https://github.com/commitizen/conventional-commit-types/blob/master/index.json
 
-> REF: https://github.com/commitizen/conventional-commit-types/blob/master/index.json
-
-> REF: https://www.conventionalcommits.org/en/v1.0.0/
+> https://www.conventionalcommits.org/en/v1.0.0/
 
 ```text
 <type>(<scope>)[!]: <short summary>
