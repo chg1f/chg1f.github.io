@@ -34,8 +34,9 @@ menu:
 theme: papermod
 params:
   author: chg1f
-  description: KEEP IT SIMPLE, STUPID!
   socialIcons:
+    - name: email
+      url: "mailto:chongiofai@gmail.com"
     - name: github
       url: "https://github.com/chg1f"
 
@@ -50,8 +51,11 @@ params:
   homeInfoParams:
     Title: |-
       KEEP IT SIMPLE, STUPID!
-    # Content: |-
-    #   KEEP IT SIMPLE, STUPID!
+    Content: |-
+      Hello, I'm chg1f / chongiofai,
+      Come from Macau and live in Beijing,
+      Work in CyberSecurity Development,
+      Stack: Golang, Python, Bash..
 
   fuseOpts:
     isCaseSensitive: false
